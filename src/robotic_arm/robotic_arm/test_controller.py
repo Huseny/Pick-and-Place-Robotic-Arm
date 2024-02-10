@@ -1,6 +1,8 @@
 import rclpy
 from rclpy.node import Node
-from controller_manager_msgs.srv import ListControllers, ListControllersRequest, SwitchController, SwitchControllerRequest
+from controller_manager_msgs.srv import ListControllers, SwitchController
+from controller_manager_msgs.srv._list_controllers import ListControllers_Request as ListControllersRequest
+from controller_manager_msgs.srv._switch_controller import SwitchController_Request as SwitchControllerRequest
 
 class RobotController(Node):
     def __init__(self):
@@ -29,7 +31,7 @@ def main(args=None):
     controller_node = RobotController()
 
     # Example: Move joint_1 to position 1.0
-    controller_node.switch_controllers(["joint_1"], [])
+    controller_node.switch_controllers(["joint_2"], [])
     controller_node.list_controllers()
 
     rclpy.shutdown()
